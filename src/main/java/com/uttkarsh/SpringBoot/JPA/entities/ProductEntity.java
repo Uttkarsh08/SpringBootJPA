@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
             // Instead of scanning the entire table, the database uses the index to quickly find the rows that match the search criteria.(it uses B-Trees/Hash Indexes for this)
         }
 )
-public class Product {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
