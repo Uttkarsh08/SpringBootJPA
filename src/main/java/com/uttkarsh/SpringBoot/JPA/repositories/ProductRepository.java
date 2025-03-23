@@ -1,6 +1,7 @@
 package com.uttkarsh.SpringBoot.JPA.repositories;
 
 import com.uttkarsh.SpringBoot.JPA.entities.ProductEntity;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -11,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
+
+    //FILTERING
 
     //we don't need to implement these methods, Spring Data JPA does it for us.
     //we just need to define the methods by following some rules, and JPA will do its magic.
@@ -31,4 +34,12 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     Optional<ProductEntity> finByCompanyAndPrice(String company,  BigDecimal price);
 
     //NOTE: - we did test them , using unit testing
+
+
+
+    //SORTING
+
+    List<ProductEntity> findByOrderByPrice();
+
+    List<ProductEntity> findBy(Sort sort);
 }
