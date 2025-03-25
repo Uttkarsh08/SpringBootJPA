@@ -1,9 +1,12 @@
 package com.uttkarsh.SpringBoot.JPA.repositories;
 
 import com.uttkarsh.SpringBoot.JPA.entities.ProductEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import javax.swing.text.html.Option;
 import java.math.BigDecimal;
@@ -11,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     //FILTERING
@@ -42,4 +46,10 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
     List<ProductEntity> findByOrderByPrice();
 
     List<ProductEntity> findBy(Sort sort);
+
+
+    //PAGINATION
+
+    Page<ProductEntity> findByPriceGreaterThan(Integer quantity,Pageable pageable);
+
 }
